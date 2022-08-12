@@ -11,16 +11,17 @@ class AuthController extends Controller
 {
     
     public function register(Request $request) {
-        return "Catched";
+        // return $request->all();
 
         try {
             //get request data ...
-            $requestData = json_decode($request->getContent());
+            // $requestData = json_decode($request->all());
+            $requestData = $request->all();
             $arrData = [
-                'name' => isset($requestData->name) ? $requestData->name : "",
-                'email' => isset($requestData->email) ? $requestData->email : "",
-                'password' => isset($requestData->password) ? $requestData->password : "",
-                'confirmpassword' => isset($requestData->confirmpassword) ? $requestData->confirmpassword : "",
+                'name' => isset($requestData['name']) ? $requestData['name'] : "",
+                'email' => isset($requestData['email']) ? $requestData['email'] : "",
+                'password' => isset($requestData['password']) ? $requestData['password'] : "",
+                'confirmpassword' => isset($requestData['confirmpassword']) ? $requestData['confirmpassword'] : "",
             ];
 
             //validate ...
@@ -52,10 +53,11 @@ class AuthController extends Controller
     public function login(Request $request) {
 
         //get request data ...
-        $requestData = json_decode($request->getContent());
+        // $requestData = json_decode($request->getContent());
+        $requestData = $request->all();
         $arrData = [
-            'email' => isset($requestData->email) ? $requestData->email : "",
-            'password' => isset($requestData->password) ? $requestData->password : "",
+            'email' => isset($requestData['email']) ? $requestData['email'] : "",
+            'password' => isset($requestData['password']) ? $requestData['password'] : "",
         ];
 
         //validate ...

@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 // ---------------------- Login Routes ----------------------
 Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
+
+// ---------------------- Other Routes ----------------------
+Route::resource('/user', 'UserAccountController')->only(['index', 'show', 'update', 'destroy'])->middleware('auth:api');
