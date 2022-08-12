@@ -20,3 +20,4 @@ Route::post('/login', 'AuthController@login');
 
 // ---------------------- Other Routes ----------------------
 Route::resource('/user', 'UserAccountController')->only(['index', 'show', 'update', 'destroy'])->middleware('auth:api');
+Route::resource('/room', 'RoomTemplateController')->middleware('auth:api');
