@@ -132,7 +132,8 @@ class RoomTemplateController extends Controller
         try {
             //update status to inactive | active ...
             $room->where('id', $room->id)->update(['is_active' => $room->is_active == 0 ? 1 : 0]);
-            return response()->json(['message' => "Successfully deleted."], 200);
+            $message = $room->is_active == 0 ? "Activated" : "Deactivated";
+            return response()->json(['message' => "Successfully ".$message], 200);
 
         } catch(\Illuminate\Database\QueryException $ex) { 
             //query error ...
